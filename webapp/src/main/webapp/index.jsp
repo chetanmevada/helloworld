@@ -1,83 +1,71 @@
-<div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
+/*
+Code revised from Desktop Java Live:
+http://www.sourcebeat.com/downloads/
+*/
 
-        <div class="row">
-          <div class="col-50">
-            <h3>Billing Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe">
-            <label for="email"><i class="fa fa-envelope"></i> Email</label>
-            <input type="text" id="email" name="email" placeholder="john@example.com">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="New York">
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="NY">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="10001">
-              </div>
-            </div>
-          </div>
+import java.awt.BorderLayout;
 
-          <div class="col-50">
-            <h3>Payment</h3>
-            <label for="fname">Accepted Cards</label>
-            <div class="icon-container">
-              <i class="fa fa-cc-visa" style="color:navy;"></i>
-              <i class="fa fa-cc-amex" style="color:blue;"></i>
-              <i class="fa fa-cc-mastercard" style="color:red;"></i>
-              <i class="fa fa-cc-discover" style="color:orange;"></i>
-            </div>
-            <label for="cname">Name on Card</label>
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe">
-            <label for="ccnum">Credit card number</label>
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
-            <label for="expmonth">Exp Month</label>
-            <input type="text" id="expmonth" name="expmonth" placeholder="September">
+import javax.swing.BorderFactory;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-            <div class="row">
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2018">
-              </div>
-              <div class="col-50">
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="352">
-              </div>
-            </div>
-          </div>
+import com.jgoodies.forms.builder.DefaultFormBuilder;
+import com.jgoodies.forms.layout.FormLayout;
 
-        </div>
-        <label>
-          <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
-        </label>
-        <input type="submit" value="Continue to checkout" class="btn">
-      </form>
-    </div>
-  </div>
+public class DefaultFormBuilderExample1 extends JPanel {
+    public DefaultFormBuilderExample1() {
+      super(new BorderLayout());
+  
+        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(""));
+        builder.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        builder.appendColumn("right:pref");
+        builder.appendColumn("3dlu");
+        builder.appendColumn("fill:max(pref; 100px)");
+        builder.appendColumn("5dlu");
+        builder.appendColumn("right:pref");
+        builder.appendColumn("3dlu");
+        builder.appendColumn("fill:max(pref; 100px)");
 
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
-        </span>
-      </h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
-</div>
+        builder.append("First:", new JTextField());
+
+        builder.append("Last:", new JTextField());
+        builder.nextLine();
+
+        builder.append("Married:", new JCheckBox());
+        builder.nextLine();
+
+        builder.append("Phone:", new JTextField());
+        builder.nextLine();
+
+        builder.append("Fax:", new JTextField());
+        builder.nextLine();
+
+        builder.append("Email:", new JTextField());
+        builder.nextLine();
+
+        builder.appendSeparator("Work");
+
+        builder.append("Company:", new JTextField());
+        builder.nextLine();
+
+        builder.append("Phone:", new JTextField());
+        builder.nextLine();
+
+        builder.append("Fax:", new JTextField());
+        builder.nextLine();
+
+        add(builder.getPanel());
+    }
+
+
+    public static void main(String[] a){
+      JFrame f = new JFrame("FormLayout: Default Form Builder Example 1");
+      f.setDefaultCloseOperation(2);
+      f.add(new DefaultFormBuilderExample1());
+      f.pack();
+      f.setVisible(true);
+    }
+}
